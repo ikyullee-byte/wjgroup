@@ -1,69 +1,95 @@
-<section>
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-blue-950 flex items-center">
-            <span class="w-1.5 h-5 bg-blue-600 rounded-full mr-2"></span>교회 소식
-        </h2>
-    </div>
-    <div class="space-y-3">
-        <div onclick="openModal()" class="bg-orange-50 p-5 rounded-2xl shadow-sm border-l-4 border-orange-500 flex justify-between items-center active:scale-[0.98] transition cursor-pointer group">
-            <div class="flex-1">
-                <div class="flex items-center mb-1">
-                    <span class="bg-orange-500 text-white text-[9px] px-2 py-0.5 rounded-full font-bold mr-2 uppercase">Notice</span>
-                    <h3 class="text-sm font-bold text-gray-800 group-hover:text-orange-600">이번 주 기관장 월례 모임 안내</h3>
-                </div>
-                <p class="text-[11px] text-gray-500">1·2·3여전도회, 남전도회, 교회학교</p>
-            </div>
-            <i class="fas fa-chevron-right text-orange-300 text-xs"></i>
-        </div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기관장 모임 공지 게시판</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="text-gray-800">
 
-        <div class="bg-white p-5 rounded-2xl shadow-sm border-l-4 border-blue-600 flex justify-between items-center active:bg-gray-50 transition">
-            <h3 class="text-sm font-medium text-gray-800">2026년 봄 정기 심방 일정 안내</h3>
-            <span class="text-gray-400 text-[10px]">03.04</span>
+    <header class="bg-indigo-700 text-white py-10 shadow-lg">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl font-bold mb-2">🏛️ 기관장 연합 모임</h1>
+            <p class="text-indigo-100 italic">"각 지체가 합력하여 선을 이루는 공동체"</p>
         </div>
-    </div>
-</section>
+    </header>
 
-<div id="noticeModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center px-6">
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
-    <div class="bg-white w-full max-w-sm rounded-[2.5rem] shadow-2xl relative z-[210] overflow-hidden animate-in fade-in zoom-in duration-300">
-        <div class="bg-orange-500 p-6 text-white text-center">
-            <i class="fas fa-bullhorn text-3xl mb-2"></i>
-            <h4 class="text-lg font-bold">기관장 모임 안내</h4>
-        </div>
-        <div class="p-8">
-            <div class="space-y-4 text-sm text-gray-600">
-                <div class="flex items-start">
-                    <span class="font-bold text-orange-600 w-16 shrink-0">일시</span>
-                    <span>이번 주 주일 오후 1:30 (예배 후)</span>
+    <main class="container mx-auto px-4 py-10 max-w-4xl">
+        
+        <section class="mb-12">
+            <h2 class="text-xl font-bold mb-5 flex items-center border-l-4 border-indigo-600 pl-3">
+                📌 금주 통합 공지사항
+            </h2>
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-bold underline">긴급공지</span>
+                    <span class="text-gray-400 text-sm">2026-03-04</span>
                 </div>
-                <div class="flex items-start">
-                    <span class="font-bold text-orange-600 w-16 shrink-0">장소</span>
-                    <span>교회 소회의실</span>
-                </div>
-                <div class="flex items-start border-t pt-4">
-                    <span class="font-bold text-orange-600 w-16 shrink-0">대상</span>
-                    <div class="leading-6 font-medium text-gray-800">
-                        • 제 1·2·3 여전도회장<br>
-                        • 남전도회장<br>
-                        • 교회학교 부장
-                    </div>
-                </div>
-                <p class="text-xs bg-gray-50 p-3 rounded-xl text-gray-500 leading-5">
-                    * 각 기관의 3월 사역 보고 및 부흥 계획을 논의하는 시간입니다. 모든 기관장님들께서는 필히 참석해 주시기 바랍니다.
+                <h3 class="text-lg font-semibold mb-2">전 기관 연합 야유회 일정 확정</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    이번 달 마지막 주 토요일(3월 28일)에 전 기관이 함께하는 연합 야유회가 있습니다. 
+                    각 기관장님들께서는 이번 주 금요일까지 참가 인원을 파악해주시기 바랍니다.
                 </p>
             </div>
-            <button onclick="closeModal()" class="w-full mt-8 py-4 bg-gray-900 text-white rounded-2xl font-bold active:scale-95 transition">닫기</button>
-        </div>
-    </div>
-</div>
+        </section>
 
-<script>
-    function openModal() {
-        document.getElementById('noticeModal').classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
-    }
-    function closeModal() {
-        document.getElementById('noticeModal').classList.add('hidden');
-        document.body.style.overflow = 'auto'; // 스크롤 복구
-    }
-</script>
+        <section>
+            <h2 class="text-xl font-bold mb-5 flex items-center border-l-4 border-indigo-600 pl-3">
+                📂 기관별 세부 공지
+            </h2>
+            
+            <div class="grid gap-4 md:grid-cols-1">
+                <div class="bg-white p-5 rounded-lg border-l-4 border-pink-400 shadow-sm flex justify-between items-center hover:shadow-md transition">
+                    <div>
+                        <h4 class="font-bold text-pink-600">제1여전도회</h4>
+                        <p class="text-gray-600 mt-1 italic">"월례회 장소 변경: 교육관 2층"</p>
+                    </div>
+                    <span class="text-xs text-gray-400">오전 11:00</span>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-pink-400 shadow-sm flex justify-between items-center hover:shadow-md transition">
+                    <div>
+                        <h4 class="font-bold text-pink-600">제2여전도회</h4>
+                        <p class="text-gray-600 mt-1">심방 대원 모집 및 명단 확인</p>
+                    </div>
+                    <span class="text-xs text-gray-400">1일 전</span>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-pink-400 shadow-sm flex justify-between items-center hover:shadow-md transition">
+                    <div>
+                        <h4 class="font-bold text-pink-600">제3여전도회</h4>
+                        <p class="text-gray-600 mt-1 text-sm italic">업데이트된 공지가 없습니다.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-blue-500 shadow-sm flex justify-between items-center hover:shadow-md transition">
+                    <div>
+                        <h4 class="font-bold text-blue-600">남전도회</h4>
+                        <p class="text-gray-600 mt-1 text-sm font-semibold">교회 외벽 미화 봉사 (이번주 토요일)</p>
+                    </div>
+                    <span class="text-xs text-gray-400">오전 09:00</span>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border-l-4 border-yellow-400 shadow-sm flex justify-between items-center hover:shadow-md transition">
+                    <div>
+                        <h4 class="font-bold text-yellow-600">주일학교</h4>
+                        <p class="text-gray-600 mt-1">여름 성경학교 교사 세미나 안내</p>
+                    </div>
+                    <span class="text-xs text-gray-400">2일 전</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-10 bg-gray-100 text-center text-gray-400 text-sm border-t border-gray-200">
+        <p>© 2026 기관장 연합회. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
