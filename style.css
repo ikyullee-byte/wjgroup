@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+/* 기본 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #f8fafc;
+    word-break: keep-all; /* 한글 단어 깨짐 방지 */
+}
+
+/* 딥 블루 그라데이션 */
+.bg-church {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+
+/* 네비게이션 유리창 효과 */
+.glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* 카드 및 섹션 그림자 */
+.card-shadow {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* 반응형 여백 (모바일은 하단바 때문에 여백 필요, PC는 불필요) */
+.content-padding {
+    padding-bottom: 7rem; /* 모바일 하단바 높이 */
+}
+@media (min-width: 768px) {
+    .content-padding { padding-bottom: 0; }
+}
+
+/* 팝업 애니메이션 */
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.animate-pop { animation: slideUp 0.3s ease-out; }
+
+/* 이미지 에러 시 텍스트 처리 */
+.logo-img[src=""], .logo-img:not([src]) { display: none; }
