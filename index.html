@@ -2,127 +2,181 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>원종제일교회 기관 공지사항</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>원종제일교회 공지</title>
     <style>
-        :root {
-            --primary-bg: #f0f4f8;
-            --church-blue: #1e3a8a;
-            --accent-gold: #f59e0b;
-            --card-white: #ffffff;
+        /* 기본 셋팅: 가독성 중심 */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background-color: #f2f4f7; 
+            color: #2d3436; 
+            margin: 0; padding: 0; line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        body { font-family: 'Malgun Gothic', sans-serif; background-color: var(--primary-bg); margin: 0; padding: 0; color: #333; line-height: 1.6; }
-        
-        /* 헤더 섹션 */
-        header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 40px 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        header h1 { margin: 0; font-size: 24px; letter-spacing: -1px; }
-        header p { margin-top: 8px; font-size: 14px; opacity: 0.9; }
+        /* 헤더: 교회 정체성 강조 */
+        header { 
+            background-color: #ffffff; 
+            padding: 25px 20px; 
+            text-align: left; 
+            border-bottom: 1px solid #eee;
+        }
+        header h1 { font-size: 22px; margin: 0; color: #1a365d; font-weight: 800; }
+        header p { font-size: 14px; margin: 5px 0 0; color: #718096; }
 
-        /* 컨텐츠 중앙 정렬 */
-        main { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        /* 메인 컨테이너 */
+        main { padding: 15px; max-width: 500px; margin: 0 auto; }
 
-        /* 공지 카드 공통 스타일 */
-        .card { background: var(--card-white); border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 5px solid var(--church-blue); }
-        .section-title { font-size: 18px; font-weight: bold; color: var(--church-blue); margin-bottom: 15px; display: flex; items-center; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        /* 카드 섹션 스타일 */
+        .section-label { font-size: 13px; font-weight: 700; color: #4a5568; margin-left: 5px; margin-bottom: 8px; display: block; }
         
+        .card { 
+            background: #ffffff; 
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        /* 강조 타이틀 */
+        .title { font-size: 18px; font-weight: 700; color: #1a202c; margin-bottom: 12px; display: flex; align-items: center; }
+        .title i { margin-right: 8px; }
+
         /* 리스트 스타일 */
-        ul { list-source-type: none; padding: 0; margin: 0; }
-        li { margin-bottom: 10px; list-style: none; }
-        .label { font-weight: bold; color: #555; display: inline-block; width: 80px; }
-        .highlight { color: #d32f2f; font-weight: bold; }
-        .sub-text { font-size: 13px; color: #666; background: #f9f9f9; padding: 10px; border-radius: 8px; margin-top: 5px; border-left: 3px solid #ddd; }
+        .info-row { display: flex; margin-bottom: 8px; font-size: 15px; }
+        .info-label { min-width: 70px; color: #718096; font-weight: 600; }
+        .info-value { color: #2d3748; flex: 1; }
 
-        /* 일정표 스타일 (헌신예배) */
-        .schedule-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
-        .schedule-table td { padding: 8px; border-bottom: 1px solid #f0f0f0; }
-        .dept-name { font-weight: bold; color: #444; }
-        .dept-date { text-align: right; color: #2563eb; font-weight: bold; }
+        /* 강조 박스 (기쁨반/연락망 등) */
+        .highlight-box { 
+            background-color: #f8fafc; 
+            border-radius: 12px; 
+            padding: 15px; 
+            margin-top: 10px; 
+            font-size: 14px; 
+            border-left: 4px solid #3182ce;
+        }
+        
+        /* 헌신예배 테이블 */
+        .table-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .table-item { background: #edf2f7; padding: 12px; border-radius: 10px; text-align: center; }
+        .table-dept { font-size: 13px; color: #4a5568; margin-bottom: 4px; }
+        .table-date { font-weight: 700; color: #2b6cb0; font-size: 15px; }
 
-        footer { text-align: center; padding: 30px 0; color: #888; font-size: 12px; }
+        /* 하단 정보 */
+        footer { text-align: center; padding: 30px 20px; color: #a0aec0; font-size: 12px; }
+        
+        /* 배지 스타일 */
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; }
+        .badge-red { background: #fff5f5; color: #c53030; }
+        .badge-blue { background: #ebf8ff; color: #2b6cb0; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>⛪ 원종제일교회 기관 공지</h1>
-    <p>3월 1일 기관장 회의 결과 및 주요 일정</p>
+    <h1>⛪ 원종제일교회 공지</h1>
+    <p>3월 1일 기관장 회의 결과 안내</p>
 </header>
 
 <main>
-
-    <div class="card">
-        <div class="section-title">📅 정기 회의 안내</div>
-        <p style="font-weight: bold; text-align: center; background: #eef2ff; padding: 10px; border-radius: 10px; color: #1e40af;">
-            "기관장 회의는 매달 첫째주 일요일<br>오후예배 종료 후 진행됩니다."
+    <div class="card" style="background: #1a365d; color: white;">
+        <div class="title" style="color: white;">📅 정기 회의 안내</div>
+        <p style="margin: 0; font-size: 15px; opacity: 0.9;">
+            매달 <strong>첫째주 일요일 오후예배 후</strong> 진행됩니다. 기관장님들의 많은 참석 바랍니다.
         </p>
     </div>
 
+    <span class="section-label">주요 사역</span>
     <div class="card">
-        <div class="section-title">📢 주요 사역 안내</div>
-        <ul>
-            <li>
-                <span class="highlight">✨ 고난주간 특별새벽기도</span><br>
-                <span class="label">날짜</span> 3/30(월) ~ 4/3(금)<br>
-                <span class="label">요청</span> 각 기관별 '대표기도자' 준비 부탁드립니다.
-            </li>
-            <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
-            <li>
-                <span class="highlight">🔥 전도특공대 재개</span><br>
-                <span class="label">일시</span> 매월 2, 4째주 토요일<br>
-                <p class="sub-text">함께 기도함으로 마음을 모아주시길 부탁드립니다.</p>
-            </li>
-        </ul>
-    </div>
+        <div class="badge badge-red">IMPORTANT</div>
+        <div class="title">고난주간 특별새벽기도</div>
+        <div class="info-row">
+            <div class="info-label">날짜</div>
+            <div class="info-value">3/30(월) — 4/3(금)</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">준비</div>
+            <div class="info-value">각 기관별 '대표기도자' 준비</div>
+        </div>
 
-    <div class="card" style="border-top-color: #10b981;">
-        <div class="section-title">🍱 식사 준비 및 섬김</div>
-        <ul>
-            <li><strong>매월 2주차: '기쁨반' 식사 섬김</strong></li>
-            <div class="sub-text">
-                <strong>헌신자:</strong> 박미자, 박수자, 변지민 성도님<br>
-                <small>* 비용 절감을 위해 세 분께서 자원해주셨습니다. <strong>설거지는 다른 분들이 적극적으로 돕길 부탁드립니다.</strong></small>
+        <div style="margin-top: 20px; border-top: 1px solid #edf2f7; padding-top: 20px;">
+            <div class="title">3월 전도특공대 시작</div>
+            <div class="info-row">
+                <div class="info-label">일시</div>
+                <div class="info-value">매월 2, 4째주 토요일</div>
             </div>
-            <li style="margin-top:15px;"><strong>매월 5주차:</strong> 교회에서 라면, 김밥, 빵 제공</li>
-        </ul>
+            <p class="highlight-box" style="border-left-color: #ecc94b;">
+                🙏 함께 기도함으로 마음을 모아주세요.
+            </p>
+        </div>
     </div>
 
-    <div class="card" style="border-top-color: var(--accent-gold);">
-        <div class="section-title">🙏 기관별 헌신예배 일정</div>
-        <p style="font-size: 12px; color: #888; margin-bottom: 5px;">* 매월 셋째주 일요일</p>
-        <table class="schedule-table">
-            <tr><td class="dept-name">1여전도회</td><td class="dept-date">4월 19일</td></tr>
-            <tr><td class="dept-name">2여전도회</td><td class="dept-date">6월 21일</td></tr>
-            <tr><td class="dept-name">3여전도회</td><td class="dept-date">7월 19일</td></tr>
-            <tr><td class="dept-name">주일학교</td><td class="dept-date">8월 16일</td></tr>
-            <tr><td class="dept-name">남전도회</td><td class="dept-date">9월 20일</td></tr>
-        </table>
-    </div>
-
+    <span class="section-label">식사 섬김 안내</span>
     <div class="card">
-        <div class="section-title">📝 기타 보고 및 계획</div>
-        <ul>
-            <li>
-                <strong>📱 비상연락망 공유</strong>
-                <p class="sub-text">경조사 및 행사 공유 목적. 각 회장님들이 회원들에게 미리 공유해주시고, 부재 시 대리자를 세워주세요.</p>
-            </li>
-            <li>
-                <strong>🌳 전교인 야유회 계획</strong>
-                <span class="label">날짜</span> 5월 31일(일) 예정<br>
-                <span class="label">장소</span> 장미공원 <small>(변동 가능)</small>
-            </li>
-            <li>
-                <strong>🤝 5주차 연합예배 및 셀모임</strong>
-                <p class="sub-text">3월 29일 연합예배 진행. 5월 전까지 구체적인 셀 리더십 강화 방안 마련 예정.</p>
-            </li>
-        </ul>
+        <div class="title">🍱 식사 운영 계획</div>
+        <div class="info-row">
+            <div class="info-label">2주차</div>
+            <div class="info-value"><strong>기쁨반</strong> 식사 준비</div>
+        </div>
+        <div class="highlight-box">
+            <strong>기쁨반(박미자, 박수자, 변지민)</strong><br>
+            비용 절감을 위해 세 분이 헌신해주십니다. <br>
+            <span style="color: #c53030; font-weight: bold;">💡 설거지는 다함께 도와주세요!</span>
+        </div>
+        <div class="info-row" style="margin-top: 15px;">
+            <div class="info-label">5주차</div>
+            <div class="info-value">교회에서 라면, 김밥, 빵 제공</div>
+        </div>
     </div>
 
+    <span class="section-label">기관별 헌신예배 (셋째주)</span>
+    <div class="card">
+        <div class="table-grid">
+            <div class="table-item">
+                <div class="table-dept">1여전도회</div>
+                <div class="table-date">4.19</div>
+            </div>
+            <div class="table-item">
+                <div class="table-dept">2여전도회</div>
+                <div class="table-date">6.21</div>
+            </div>
+            <div class="table-item">
+                <div class="table-dept">3여전도회</div>
+                <div class="table-date">7.19</div>
+            </div>
+            <div class="table-item">
+                <div class="table-dept">주일학교</div>
+                <div class="table-date">8.16</div>
+            </div>
+            <div class="table-item" style="grid-column: span 2;">
+                <div class="table-dept">남전도회</div>
+                <div class="table-date">9.20</div>
+            </div>
+        </div>
+    </div>
+
+    <span class="section-label">기타 안내</span>
+    <div class="card">
+        <div class="title">📢 협조사항</div>
+        <div class="info-row">
+            <div class="info-label">연락망</div>
+            <div class="info-value">비상연락망 공유 (회장 부재시 대체자)</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">야유회</div>
+            <div class="info-value">5/31(일) 장미공원 (예정)</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">연합</div>
+            <div class="info-value">3/29(일) 연합예배 및 셀모임 강화</div>
+        </div>
+    </div>
 </main>
 
 <footer>
-    © 2026 원종제일교회 기관 연합회<br>
-    본 페이지는 기관장님들의 원활한 소통을 위해 제작되었습니다.
+    © 2026 원종제일교회 기관 연합<br>
+    협력하여 선을 이루는 공동체
 </footer>
 
 </body>
